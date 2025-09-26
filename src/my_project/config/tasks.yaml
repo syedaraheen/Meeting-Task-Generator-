@@ -1,0 +1,32 @@
+task_generation:
+  description: >
+    Analyze the provided meeting notes and goals to create a structured action-item list.
+    
+    Meeting Goal: {meeting_goal}
+    Meeting Notes: {meeting_notes}
+    
+    Your task is to:
+    1. Extract all actionable items from the meeting notes
+    2. Assign each task to the appropriate team/person based on the context
+    3. Estimate realistic deadlines for each task
+    4. Ensure tasks are specific, measurable, and actionable
+    5. Consider dependencies between tasks
+    6. Format the output as a clear, professional action-item list
+    
+    Guidelines:
+    - Keep language concise and professional
+    - Make tasks specific and actionable
+    - Assign tasks to appropriate teams/people based on context
+    - Set realistic deadlines (1-14 days typically)
+    - Number each action item clearly
+  expected_output: >
+    A structured action-item list in this exact format:
+    
+    Action Items:
+    1. [Team/Person] → [Task Description] (Deadline: X days)
+    2. [Team/Person] → [Task Description] (Deadline: X days)
+    3. [Team/Person] → [Task Description] (Deadline: X days)
+    
+    Keep the language concise, professional, and easy to follow.
+    Each task should be specific, assigned to the right team/person, and have a suggested deadline.
+  agent: project_coordinator

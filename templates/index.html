@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Task Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tasks"></i>
+                    <h1>Meeting Task Generator</h1>
+                </div>
+                <p class="subtitle">Transform meeting notes into actionable task lists</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Form -->
+            <div class="form-container">
+                <form id="meetingForm" class="meeting-form">
+                    <div class="form-group">
+                        <label for="meetingGoal" class="form-label">
+                            <i class="fas fa-bullseye"></i>
+                            Meeting Goal
+                        </label>
+                        <input 
+                            type="text" 
+                            id="meetingGoal" 
+                            name="meeting_goal" 
+                            placeholder="e.g., Prepare for product launch"
+                            class="form-input"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meetingNotes" class="form-label">
+                            <i class="fas fa-sticky-note"></i>
+                            Meeting Notes
+                        </label>
+                        <textarea 
+                            id="meetingNotes" 
+                            name="meeting_notes" 
+                            placeholder="Enter your meeting notes here...&#10;&#10;Example:&#10;- Marketing needs to finalize campaign strategy&#10;- Engineering is still testing payment gateway&#10;- Sales team needs demo scripts"
+                            class="form-textarea"
+                            rows="8"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="generate-btn" id="generateBtn">
+                        <i class="fas fa-magic"></i>
+                        <span>Generate Action Items</span>
+                        <div class="loading-spinner" id="loadingSpinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-container" id="resultsContainer" style="display: none;">
+                <div class="results-header">
+                    <h2><i class="fas fa-list-check"></i> Generated Action Items</h2>
+                    <button class="copy-btn" id="copyBtn" title="Copy to clipboard">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                
+                <div class="action-items" id="actionItems">
+                    <!-- Action items will be populated here -->
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="errorText"></span>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by <strong>CrewAI</strong> • Meeting Task Generator</p>
+        </footer>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <i class="fas fa-check-circle"></i>
+        <span>Action items generated successfully!</span>
+    </div>
+
+    <!-- Copy Toast -->
+    <div class="toast" id="copyToast">
+        <i class="fas fa-copy"></i>
+        <span>Copied to clipboard!</span>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
